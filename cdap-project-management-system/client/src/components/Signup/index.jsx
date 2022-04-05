@@ -36,20 +36,25 @@ const Signup = () => {
 	};
 
 	return (
-		<div className={styles.signup_container}>
-			<div className={styles.signup_form_container}>
+		<div className={styles.signup_container} id="Signupcontainer">
+			<div className={styles.signup_form_container} id="Container">
 				<div className={styles.left}>
-					<h1>Welcome Back</h1>
+					<h1 id="heading">Welcome</h1>
+					<div  id="sign">
+					Already have an account?&nbsp;&nbsp;&nbsp;&nbsp;
 					<Link to="/login">
-						<button type="button" className={styles.white_btn}>
-							Sing in
+						
+						<button type="button" className={styles.white_btn} id="btn">
+							Sign in
 						</button>
 					</Link>
+					</div>
 				</div>
-				<div className={styles.right}>
+				<hr id="hr1"></hr>
+				<div className={styles.right} id="createbox">
 					<form className={styles.form_container} onSubmit={handleSubmit}>
-						<h1>Create Account</h1>
-						<input
+						<h1 id="createacc">Create Account</h1>
+						<input id="Input"
 							type="text"
 							placeholder="First Name"
 							name="firstName"
@@ -58,7 +63,8 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
-						<input
+						<br/>
+						<input id="Input"
 							type="text"
 							placeholder="Last Name"
 							name="lastName"
@@ -67,7 +73,8 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
-						<input
+						<br/>
+						<input id="Input"
 							type="email"
 							placeholder="Email"
 							name="email"
@@ -76,7 +83,8 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
-						<input
+						<br/>
+						<input id="Input"
 							type="password"
 							placeholder="Password"
 							name="password"
@@ -85,9 +93,10 @@ const Signup = () => {
 							required
 							className={styles.input}
 						/>
-						{error && <div className={styles.error_msg}>{error}</div>}
-						<button type="submit" className={styles.green_btn}>
-							Sing Up
+						<br/>
+						{error && <div className={styles.error_msg} id="err">{error}</div>}
+						<button type="submit" className={styles.green_btn} id="btn1">
+							Sing up
 						</button>
 					</form>
 				</div>
