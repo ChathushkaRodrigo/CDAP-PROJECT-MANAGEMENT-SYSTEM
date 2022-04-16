@@ -10,12 +10,15 @@ import RegisterScreen from "./components/screens/RegisterScreen";
 import ForgotPasswordScreen from "./components/screens/ForgotPasswordScreen";
 import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 
-
+//Header
+import Header from "./components/Header/Header";
 
 const App = () => {
   return (
+    
     <Router>
       <div className="app">
+      <Header />
         <Switch>
         
           <PrivateRoute exact path="/" component={PrivateScreen} />
