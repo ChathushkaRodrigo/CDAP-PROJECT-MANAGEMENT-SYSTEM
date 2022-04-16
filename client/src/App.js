@@ -12,6 +12,11 @@ import ResetPasswordScreen from "./components/screens/ResetPasswordScreen";
 
 
 
+
+
+import ViewFeedback from "./components/screens/ViewFeedback";
+import ViewMarks from "./components/screens/ViewFeedback";
+
 const App = () => {
   return (
     <Router>
@@ -31,6 +36,8 @@ const App = () => {
             path="/passwordreset/:resetToken"
             component={ResetPasswordScreen}
           />
+          <Route exact path="/viewfeedback" component={ViewFeedback} />
+         <Route exact path="/viewmarks" component={ViewMarks}/>
         </Switch>
       </div>
     </Router>
