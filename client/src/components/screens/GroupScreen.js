@@ -10,7 +10,7 @@ const GroupScreen = ({history}) => {
     const [error, setError] = useState("");
     const [privateData, setPrivateData] = useState("");
     // const [fetchGroupData, setGroupData] = useState("")
-    const [suggestions,setsuggestions] = useState("")
+    // const [suggestions,setsuggestions] = useState("")
     const [member_1, setMember1] = useState("");
     const [member_2, setMember2] = useState("");
     const [member_3, setMember3] = useState("");
@@ -135,22 +135,23 @@ const GroupScreen = ({history}) => {
           
           </p>
           {fetchGroupData != "" &&
-          <div>
+          <div id="card">
 
             <h1 id="caption">Your group members are</h1>
-            
+            <hr id="hr"></hr>
+            <p id="List">
             {listHandler()}
+            </p>
           </div>
           
           }
            {fetchGroupData == "" &&
-           <><h1>You are not in a group. Fill this form to register to a group</h1></>
+           <><h1 id="caption">You are not in a group. Fill this form to register to a group</h1></>
            }
           {fetchGroupData == "" &&
           <div className="group-screen">
             
-          <div>
-          
+          <div>        
           <form onSubmit={groupregisterHandler} className="group-screen__form">
       <h3 className="login-screen__title">Group registration</h3>
       {error && <span className="error-message">{error}</span>}
@@ -158,6 +159,7 @@ const GroupScreen = ({history}) => {
         <label>
            Member 1:</label>
           <input type="text" 
+          className = "input"
           name="name" 
           onChange={(e) => setMember1(e.target.value)}
           value={member_1} />
@@ -169,6 +171,7 @@ const GroupScreen = ({history}) => {
            Member 2:</label>
           <input type="text" 
           name="name" 
+          className = "input"
           onChange={(e) => setMember2(e.target.value)}
           value={member_2} />
           
@@ -179,6 +182,7 @@ const GroupScreen = ({history}) => {
            Member 3:</label>
           <input type="text" 
           name="name" 
+          className = "input"
           onChange={(e) => setMember3(e.target.value)}
           value={member_3} />
                   
@@ -188,6 +192,7 @@ const GroupScreen = ({history}) => {
            Member 4:</label>
           <input type="text" 
           name="name" 
+          className = "input"
           onChange={(e) => setMember4(e.target.value)}
           value={member_4} />
                   
@@ -196,7 +201,8 @@ const GroupScreen = ({history}) => {
         <label>
            Member 5:</label>
           <input type="text" 
-          name="name" 
+          name="name"
+          className = "input"
           onChange={(e) => setMember5(e.target.value)}
           value={member_5} />
         
