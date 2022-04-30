@@ -3,6 +3,9 @@ const express = require('express');
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 
+//load and initialize messagebird SDK
+var messagebird = require('messagebird')('Ho6tvwvQO5Kmp3OIOMg3ikmYl')
+
 connectDB();
 
 const app = express();
