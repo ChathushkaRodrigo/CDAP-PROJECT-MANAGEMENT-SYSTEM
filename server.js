@@ -3,14 +3,20 @@ const express = require('express');
 const connectDB = require('./config/db')
 const errorHandler = require('./middleware/error')
 
-//load and initialize messagebird SDK
+//load and initialize messagebird SDK (new)
 var messagebird = require('messagebird')('Ho6tvwvQO5Kmp3OIOMg3ikmYl')
+app.engine('handlebars',exphbs({defaultLayout:'main'}));
+app.set('view engine', 'handlebars');
+app.use(bodyParser.urlencoded({extended:true}))
+
 
 connectDB();
 
 const app = express();
 
 app.use(express.json())
+
+
 
 // ... other imports 
 const path = require("path")
@@ -41,3 +47,7 @@ process.on("unhandledRejection", (err,promise)=>{
     console.log(`Logged Error: ${err}`)
     // server.close(()=> process.exit(1))
 })
+
+
+    
+    
