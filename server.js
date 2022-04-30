@@ -14,11 +14,6 @@ app.get('/',function(req,res){
     res.render('step1');
 })
 
-
-    
-
-
-
 connectDB();
 
 
