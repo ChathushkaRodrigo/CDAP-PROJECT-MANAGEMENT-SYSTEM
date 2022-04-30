@@ -9,8 +9,19 @@ app.engine('handlebars',exphbs({defaultLayout:'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({extended:true}))
 
+//Display page to ask the user for their phone number (new)
+app.get('/',function(req,res){
+    res.render('step1');
+})
+
+
+    
+
+
 
 connectDB();
+
+
 
 const app = express();
 
@@ -42,11 +53,65 @@ app.get("*", (req, res) => {
 });
 
 
+
+
+
 //This code causes the PROXY CRASH !!!!!
 process.on("unhandledRejection", (err,promise)=>{
     console.log(`Logged Error: ${err}`)
     // server.close(()=> process.exit(1))
 })
+
+
+
+//Handle phone number submission(new)
+
+app.post('/step2',function(req,res){
+    var number = req.body.number;
+
+    //make request to verify API
+    messagebird.verify.create(number,{
+        template:"Your verifcation code is %token"},function(err,response){
+            if(err){
+                //request has failed
+                console.log(err);
+                res.render('step1',{
+                    error:err.errors[0].description
+                })
+
+            }else{
+                //request was successful
+                console.log(response);
+                res.render('step2',{
+                    id:response.id
+                })
+            }
+            });
+        });
+
+        //verify whether the token is correct
+        app.post('/step3', function(req,res){
+            var id = req.bosy.id;
+            var token = req.body.yoken;
+
+            //make request to verify API
+            messagebird.verify.verify(id,token,function(err,response){
+                if(err){
+                    //verification has failed
+                    res.render('step2',{
+                        error:err.errors[0].description,
+                        id:id
+                    })
+                }else{
+                    //verification was successful
+                    res.render('step3')
+                }
+            })
+        })
+
+
+
+
 
 
     
