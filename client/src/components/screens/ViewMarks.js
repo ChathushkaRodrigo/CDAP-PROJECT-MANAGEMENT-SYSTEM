@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./PrivateScreen.css"
 import "./ViewMarks.css"
+import "./tailwind.css"
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 
@@ -57,11 +58,11 @@ const ViewMarks = ({history}) =>{
     <div className="view-feedback">
       <Header/>
   <br/>
-      <h1 id="caption">My Marks</h1>
+      <h1 id="caption" className="tw-text-caption">My Marks</h1>
       <br/><br/>
       <div className="card">
       <div className="container">
-        <h4 id="marks-topic"><b>Milestone 1 </b></h4> 
+        <h4 id="marks-topic" className="tw-font-bold">Milestone 1</h4> 
         <hr id="hr1"></hr>
         <p className="markscontent"> {fetchMarksData}</p> 
       </div>
@@ -69,7 +70,7 @@ const ViewMarks = ({history}) =>{
       <br/>
       <div className="card">
       <div className="container">
-        <h4 id="marks-topic"><b>Milestone 2 </b></h4> 
+        <h4 id="marks-topic"><b>Milestone 2</b></h4> 
         <hr id="hr1"></hr>
         <p className="markscontent"> Not available</p> 
       </div>

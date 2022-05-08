@@ -47,6 +47,9 @@ const GroupSchema = new mongoose.Schema({//Group model
     mem5_approve:{
         type: Boolean
     },
+    // d_file:{
+    //     type: int,
+    // },
   
     resetPasswordToken: String,
     resetPasswordExpire: Date
