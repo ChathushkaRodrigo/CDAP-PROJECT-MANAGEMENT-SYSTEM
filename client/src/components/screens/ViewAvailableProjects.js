@@ -87,7 +87,7 @@ const ViewAvailableProjects = ({history}) =>{
     <div >
       <Header/>
    {/* <br/><ul>{projectitems}</ul>  */}
-      <h1 id="caption">All projects</h1>
+      <h1 className="availableprojectscontent" color="black" id="caption">All projects</h1>
       <br/><br/>
          
 
@@ -100,11 +100,11 @@ const ViewAvailableProjects = ({history}) =>{
         <center><p style={{backgroundColor: "red"}}>{project.projectName}</p></center>
       <div className="container">
 
-            <li className="markscontent"> {project.projectName}</li>
-                    <li className="markscontent"> {project.projectName}</li> 
-                    <li className="markscontent"> {project.projectDescription}</li> 
-                    <li className="markscontent"> {project.projectBiddingCount}</li> 
-                    <li className="markscontent"> {project.publishedDate}</li>
+            
+                    <li className="availableprojectscontent">Project Name: {project.projectName}</li> 
+                    <li className="availableprojectscontent">Project Description: {project.projectDescription}</li> 
+                    <li className="availableprojectscontent">Project Bidding count: {project.projectBiddingCount}</li> 
+                    <li className="availableprojectscontent">Project published date: {project.publishedDate}</li>
 
           
 
