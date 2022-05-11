@@ -9,10 +9,10 @@ try{
     const availableProjects = await AvailableProject.find()//group that is approved and have this perticular member
     //console.log(availableProjects[1])// 
     const array = Object.values(availableProjects)
-    console.log(array)
+    //console.log(array)
     const arrayproject = JSON.stringify(array).split(',')
-    console.log(arrayproject)
-    console.log(typeof arrayproject)
+   // console.log(arrayproject)
+   // console.log(typeof arrayproject)
 
     res.status(201).json({
         success: true,
@@ -50,7 +50,7 @@ exports.viewspecificproject = async(req,res,next) => {
 //final increase count
 exports.increasebidcount = async(req,res,next) => {
     try{
-        const availableprojectid = req.body;
+        const availableprojectid = req.params.id;
         const projectcount = await AvailableProject.findById(availableprojectid)
         console.log(projectcount);
         projectcount.projectBiddingCount = projectcount.projectBiddingCount + 1; 

@@ -11,25 +11,13 @@ const ViewAvailableProjects = ({history}) =>{
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
   const [projectarray, setprojectarray] = useState("");
+  const [projectBiddingCount, setprojectBiddingCount] = useState("");
+  const [bidcount, setbidcount] = useState(0);
   useEffect(() => {
 
-    const fetchPrivateDate = async () => {
-      const config = {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        },
-      };
+    
 
-      try {
-        const { data} = await axios.get("/api/private", config);
-        
-        setPrivateData(data.data);
-      } catch (error) {
-        localStorage.removeItem("authToken");
-        setError("You are not authorized please login");
-      }
-    };
+   
 
     const fetchProjectsData = async () =>{
       const projectsconfig = {
@@ -38,18 +26,13 @@ const ViewAvailableProjects = ({history}) =>{
           Authorization:`Bearer ${localStorage.getItem("authToken")}`,
         },
       }
-
       try{
         const{data} = await axios.get("/api/AvailableProject/availableprojects",projectsconfig);
         //console.log(typeof data.data);
         const array = Object.entries(data.data)
         setProjectsData(data.data);
-       // console.log(array);
-
-        // console.log(ProjectsData)
-        
-       //console.log(objectToArray(data.data));
-
+        //setbidcount(ProjectsData.projectBiddingCount);
+      console.log(data.data)
         
       }catch(error){
 
@@ -57,7 +40,7 @@ const ViewAvailableProjects = ({history}) =>{
       }
     }
     fetchProjectsData()
-    fetchPrivateDate()
+   
   }, [history])
   const objectToArray = obj => {
     const keys = Object.keys(obj);
@@ -73,26 +56,56 @@ const ViewAvailableProjects = ({history}) =>{
     };
     return res; 
 
+  
+
+
+
  };
 
-//  const listItems = numbers.map((number) =>    <li>{number}</li>  )
-// ;
-// const projectitems = ProjectsData.map((project) => 
-// <li>{project}</li>
-// )
+ //Increase bid count
+ const bidHandler = bid => async (e) => {
+  e.preventDefault();
+
+  console.log(bid)
+
+  try {
+    
+    const { data } = await axios.post( 
+      `/api/AvailableProject/increasebidcount/${bid}`,
+      { projectBiddingCount }
+     
+    );
+
+      window.location.reload()
+
+   
+  } 
+
+  
+  catch (error) {
+    setError(error.response.data.error);
+    setTimeout(() => {
+      setError("");
+    }, 5000);
+  } 
+  window.location.reload()
+
+};
+
+
   return  error ? ( 
   
     <span className="error-message">{error}</span>
   ) :(
     <div >
       <Header/>
-   {/* <br/><ul>{projectitems}</ul>  */}
+ 
       <h1 className="availableprojectscontent" color="black" id="caption">All projects</h1>
       <br/><br/>
          
+     
 
-
-        
+        {bidcount}
          <ul>
         {ProjectsData.map(project => {
           return (
@@ -105,6 +118,9 @@ const ViewAvailableProjects = ({history}) =>{
                     <li className="availableprojectscontent">Project Description: {project.projectDescription}</li> 
                     <li className="availableprojectscontent">Project Bidding count: {project.projectBiddingCount}</li> 
                     <li className="availableprojectscontent">Project published date: {project.publishedDate}</li>
+                   { console.log(bidcount+"dsdfsdf")}
+                   {/* {setbidcount(project.projectBiddingCount)} */}
+                    <button onClick = {bidHandler(project._id)} >Bid project</button>
 
           
 
@@ -136,7 +152,3 @@ const ViewAvailableProjects = ({history}) =>{
 export default ViewAvailableProjects;
 
 
-
-
-   
-  

@@ -11,7 +11,7 @@ router.route("/availableProjects").get(viewAvailableProjects) //router for View 
 router.route("/availableProjects/:id").get(viewspecificproject)  //router for viewing specific project
 router.route("/availableProjects/placeBidding/:id").post(placeBidonAvailableProject) //place bidding router
 
-router.route("/increasebidcount").post(increasebidcount)
+router.route("/increasebidcount/:id").post(increasebidcount)
 
 
 
