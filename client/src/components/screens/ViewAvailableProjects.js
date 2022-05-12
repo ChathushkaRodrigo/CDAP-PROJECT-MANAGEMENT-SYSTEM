@@ -73,10 +73,12 @@ const ViewAvailableProjects = ({history}) =>{
     const { data } = await axios.post( 
       `/api/AvailableProject/increasebidcount/${bid}`,
       { projectBiddingCount }
+
+      //window.location.reload()
      
     );
 
-      window.location.reload()
+      //return window.location.reload()
 
    
   } 
@@ -87,11 +89,12 @@ const ViewAvailableProjects = ({history}) =>{
     setTimeout(() => {
       setError("");
     }, 5000);
-  } 
-  window.location.reload()
+    
+  }  window.location.reload();
+    
 
 };
-
+//window.location.reload()
 
   return  error ? ( 
   
@@ -120,9 +123,9 @@ const ViewAvailableProjects = ({history}) =>{
                     <li className="availableprojectscontent">Project published date: {project.publishedDate}</li>
                    { console.log(bidcount+"dsdfsdf")}
                    {/* {setbidcount(project.projectBiddingCount)} */}
-                    <button onClick = {bidHandler(project._id)} >Bid project</button>
+                    <button onClick = {bidHandler(project._id) } >Bid project</button>
 
-          
+                   
 
       </div>
       </div>
